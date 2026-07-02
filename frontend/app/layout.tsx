@@ -66,11 +66,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="vi" suppressHydrationWarning className={plusJakartaSans.variable}>
+    <html lang="vi" suppressHydrationWarning className={`${plusJakartaSans.variable} scroll-smooth`}>
       <head>
         <StructuredData />
       </head>
-      <body className={`${plusJakartaSans.className} antialiased`}>
+      <body className={`${plusJakartaSans.className} antialiased overflow-x-hidden`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="light"

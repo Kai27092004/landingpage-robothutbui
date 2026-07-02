@@ -1,3 +1,6 @@
+"use client"; // Cần thiết cho dynamic import
+
+import dynamic from "next/dynamic";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { HeroSection } from "@/features/hero/hero-section";
@@ -13,7 +16,12 @@ import { ReviewsCarousel } from "@/features/reviews/reviews-carousel";
 import { ComparisonTable } from "@/features/comparison/comparison-table";
 import { FaqSection } from "@/features/faq/faq-section";
 import { NewsletterForm } from "@/features/newsletter/newsletter-form";
-import { ChatbotWrapper } from "@/components/chatbot/chatbot-wrapper";
+
+// Lazy load Chatbot để tăng điểm Performance
+const ChatbotWrapper = dynamic(
+  () => import("@/components/chatbot/chatbot-wrapper").then((mod) => mod.ChatbotWrapper),
+  { ssr: false }
+);
 
 export default function Home() {
   return (

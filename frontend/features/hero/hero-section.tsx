@@ -116,10 +116,12 @@ export function HeroSection() {
                   src="/robot-hero.png"
                   alt="Robot Hút Bụi Thông Minh - AI Điều Hướng LiDAR 5000Pa"
                   fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 600px"
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-contain drop-shadow-2xl"
-                  priority
-                  quality={95}
+                  priority={true}
+                  quality={85}
+                  loading="eager"
+                  fetchPriority="high"
                 />
               </div>
             </motion.div>

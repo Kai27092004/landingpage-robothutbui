@@ -1,14 +1,39 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
+import { useScroll, useTransform, motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Play, ChevronDown, Star } from "lucide-react";
 import Image from "next/image";
 import { PRODUCT_TAGLINE, PRODUCT_SUBTITLE } from "@/constants/product";
 
 export function HeroSection() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"],
+  });
+
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize, { passive: true });
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const parallaxY = isDesktop ? y : 0;
+
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section 
+      ref={containerRef}
+      id="home" 
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+    >
       {/* Background Gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-indigo-950 dark:to-blue-950" />
       
@@ -95,6 +120,7 @@ export function HeroSection() {
 
           {/* Right Content - Robot Image */}
           <motion.div
+            style={{ y: parallaxY }}
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}

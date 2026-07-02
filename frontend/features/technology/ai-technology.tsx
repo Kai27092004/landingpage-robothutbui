@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { Camera, Radar, Map, Shield, Home, Sparkles } from "lucide-react";
 import { AI_TIMELINE } from "@/constants/product";
 
@@ -11,6 +11,71 @@ const iconMap: Record<string, any> = {
   Shield,
   Home,
   Sparkles,
+};
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const cardVariants = (isEven: boolean): Variants => ({
+  hidden: { opacity: 0, x: isEven ? -50 : 50, y: 20 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 80,
+      damping: 15,
+      staggerChildren: 0.1,
+      delayChildren: 0.1,
+    },
+  },
+});
+
+const childVariants: Variants = {
+  hidden: { opacity: 0, y: 15 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 15,
+    },
+  },
+};
+
+const dotVariants: Variants = {
+  hidden: { scale: 0, opacity: 0 },
+  visible: {
+    scale: 1,
+    opacity: 1,
+    transition: {
+      type: "spring",
+      stiffness: 200,
+      damping: 12,
+      delay: 0.15,
+    },
+  },
+};
+
+const lineVariants: Variants = {
+  hidden: { height: 0 },
+  visible: {
+    height: "100%",
+    transition: {
+      duration: 0.8,
+      ease: "easeOut",
+    },
+  },
 };
 
 export function AiTechnology() {
@@ -39,15 +104,18 @@ export function AiTechnology() {
             return (
               <motion.div
                 key={item.title}
-                initial={{ opacity: 0, x: isEven ? -50 : 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+                variants={itemVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
                 className="relative mb-12 last:mb-0"
               >
                 <div className="flex items-center gap-8">
                   {/* Timeline Line */}
-                  <div className="hidden md:block absolute left-1/2 top-0 w-px h-full bg-gradient-to-b from-accent/50 to-transparent" />
+                  <motion.div
+                    variants={lineVariants}
+                    className="hidden md:block absolute left-1/2 top-0 w-px bg-gradient-to-b from-accent/50 to-transparent"
+                  />
 
                   {/* Content */}
                   <div
@@ -55,23 +123,38 @@ export function AiTechnology() {
                       isEven ? "md:pr-12 md:text-right" : "md:pl-12 md:ml-auto"
                     }`}
                   >
-                    <div className="p-6 rounded-2xl bg-white/10 backdrop-blur-sm border-2 border-white/20 hover:border-blue-400 hover:bg-white/15 transition-all duration-300 shadow-xl">
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shrink-0 shadow-xl">
-                      {Icon && <Icon className="w-7 h-7 text-white" />}
-                    </div>
-                    <h3 className="font-heading font-bold text-2xl">
-                      {item.title}
-                    </h3>
-                  </div>
-                  <p className="text-gray-200 leading-relaxed">
-                    {item.description}
-                  </p>
-                    </div>
+                    <motion.div
+                      variants={cardVariants(isEven)}
+                      className="p-6 rounded-2xl bg-white/10 backdrop-blur-sm border-2 border-white/20 hover:border-blue-400 hover:bg-white/15 transition-all duration-300 shadow-xl"
+                    >
+                      <div className="flex items-center gap-4 mb-4">
+                        <motion.div
+                          variants={childVariants}
+                          className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shrink-0 shadow-xl"
+                        >
+                          {Icon && <Icon className="w-7 h-7 text-white" />}
+                        </motion.div>
+                        <motion.h3
+                          variants={childVariants}
+                          className="font-heading font-bold text-2xl"
+                        >
+                          {item.title}
+                        </motion.h3>
+                      </div>
+                      <motion.p
+                        variants={childVariants}
+                        className="text-gray-200 leading-relaxed"
+                      >
+                        {item.description}
+                      </motion.p>
+                    </motion.div>
                   </div>
 
                   {/* Center Dot */}
-                  <div className="hidden md:block absolute left-1/2 top-8 w-4 h-4 rounded-full bg-accent -translate-x-1/2 shadow-lg shadow-accent/50" />
+                  <motion.div
+                    variants={dotVariants}
+                    className="hidden md:block absolute left-1/2 top-8 w-4 h-4 rounded-full bg-accent -translate-x-1/2 shadow-lg shadow-accent/50"
+                  />
                 </div>
               </motion.div>
             );

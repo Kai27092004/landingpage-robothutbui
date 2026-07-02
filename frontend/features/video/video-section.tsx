@@ -2,10 +2,14 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Play } from "lucide-react";
 
 export function VideoSection() {
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
+
+  // Đã cập nhật đúng ID video YouTube mới theo yêu cầu của bạn
+  const YOUTUBE_VIDEO_ID = "OeNKR6oj3Pw";
 
   return (
     <section className="section-padding bg-gradient-to-b from-muted/30 to-white dark:from-secondary/30 dark:to-dark">
@@ -30,21 +34,29 @@ export function VideoSection() {
           viewport={{ once: true }}
           className="max-w-5xl mx-auto"
         >
-          <div className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-br from-accent/20 to-primary/20">
+          <div className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl bg-black">
             {!isPlaying ? (
               <>
-                {/* Poster Image */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-                  <div className="text-center text-white">
-                    <div className="text-6xl mb-4">🤖</div>
-                    <p className="text-2xl font-bold">Video Demo Robot Hút Bụi</p>
-                  </div>
+                {/* Poster Image - Ảnh tĩnh từ thư mục public */}
+                <div className="absolute inset-0">
+                  <Image
+                    src="/image-1.jpg"
+                    alt="Robot Hút Bụi Thông Minh Video Demo - Click để phát"
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 90vw, 1200px"
+                    className="object-cover"
+                    priority
+                    quality={85}
+                  />
+                  {/* Overlay tối */}
+                  <div className="absolute inset-0 bg-black/30" />
                 </div>
 
                 {/* Play Button */}
                 <button
                   onClick={() => setIsPlaying(true)}
-                  className="absolute inset-0 flex items-center justify-center group cursor-pointer"
+                  className="absolute inset-0 flex items-center justify-center group cursor-pointer z-10"
+                  aria-label="Phát video demo Robot Hút Bụi"
                 >
                   <motion.div
                     whileHover={{ scale: 1.1 }}
@@ -54,17 +66,38 @@ export function VideoSection() {
                     <Play className="w-10 h-10 text-accent ml-2" fill="currentColor" />
                   </motion.div>
                 </button>
+
+                {/* Video Label */}
+                <div className="absolute bottom-6 left-6 right-6 z-10">
+                  <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20">
+                    <p className="text-white font-semibold text-lg">
+                      Demo Video: Robot Hút Bụi Thông Minh
+                    </p>
+                    <p className="text-white/80 text-sm mt-1">
+                      Xem công nghệ AI và LiDAR hoạt động thực tế
+                    </p>
+                  </div>
+                </div>
               </>
             ) : (
-              <div className="absolute inset-0 flex items-center justify-center bg-dark">
-                <p className="text-white text-center p-8">
-                  Vùng hiển thị video
-                  <br />
-                  <span className="text-sm text-gray-400 mt-2 block">
-                    Thêm URL video hoặc mã nhúng tại đây
-                  </span>
-                </p>
-              </div>
+              /* YouTube Iframe - Chỉ load khi user click Play để tối ưu Performance */
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3 }}
+                className="absolute inset-0"
+              >
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src={`https://www.youtube.com/embed/${YOUTUBE_VIDEO_ID}?autoplay=1&rel=0&modestbranding=1`}
+                  title="Robot Hút Bụi Thông Minh - Video Demo"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  className="absolute inset-0"
+                />
+              </motion.div>
             )}
           </div>
 

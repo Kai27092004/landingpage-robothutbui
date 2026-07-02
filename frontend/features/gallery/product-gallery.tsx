@@ -6,12 +6,12 @@ import Image from "next/image";
 import { X } from "lucide-react";
 
 const galleryImages = [
-  { id: 1, src: "/gallery/image-1.jpg", alt: "Robot Hút Bụi Góc Trước" },
-  { id: 2, src: "/gallery/image-2.jpg", alt: "Robot Hút Bụi Góc Trên" },
-  { id: 3, src: "/gallery/image-3.jpg", alt: "Cảm Biến LiDAR Robot Hút Bụi" },
-  { id: 4, src: "/gallery/image-4.jpg", alt: "Robot Hút Bụi Đang Làm Sạch" },
-  { id: 5, src: "/gallery/image-5.jpg", alt: "Robot Hút Bụi Với Trạm Sạc" },
-  { id: 6, src: "/gallery/image-6.jpg", alt: "Điều Khiển Robot Qua Ứng Dụng" },
+  { id: 1, src: "/image-1.jpg", alt: "Robot Hút Bụi Thông Minh - Góc Nhìn Phía Trước Với Cảm Biến LiDAR" },
+  { id: 2, src: "/image-2.jpg", alt: "Robot Hút Bụi - Góc Nhìn Từ Trên Xuống Hiển Thị Cảm Biến 360 Độ" },
+  { id: 3, src: "/image-3.jpg", alt: "Chi Tiết Cảm Biến LiDAR Và Camera AI Tránh Vật Cản Thông Minh" },
+  { id: 4, src: "/image-4.jpg", alt: "Robot Hút Bụi Đang Làm Sạch Thảm Với Lực Hút 5000Pa" },
+  { id: 5, src: "/image-5.jpg", alt: "Robot Hút Bụi Với Trạm Sạc Tự Động Và Hộp Đựng Bụi" },
+  { id: 6, src: "/image-6.jpg", alt: "Điều Khiển Robot Qua Ứng Dụng Di Động Với Bản Đồ Nhà Thông Minh" },
 ];
 
 export function ProductGallery() {
@@ -46,9 +46,14 @@ export function ProductGallery() {
               onClick={() => setSelectedImage(index)}
               className="relative aspect-square rounded-2xl overflow-hidden cursor-pointer group bg-gradient-to-br from-accent/10 to-primary/10"
             >
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-6xl">🤖</div>
-              </div>
+              <Image
+                src={image.src}
+                alt={image.alt}
+                fill
+                sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                className="object-cover"
+                loading="lazy"
+              />
               <div className="absolute inset-0 bg-dark/0 group-hover:bg-dark/30 transition-colors flex items-center justify-center">
                 <div className="opacity-0 group-hover:opacity-100 transition-opacity text-white text-sm font-medium">
                   Xem Ảnh
@@ -73,13 +78,18 @@ export function ProductGallery() {
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.8, opacity: 0 }}
                 onClick={(e) => e.stopPropagation()}
-                className="relative max-w-5xl w-full aspect-video bg-gradient-to-br from-accent/20 to-primary/20 rounded-2xl overflow-hidden"
+                className="relative max-w-5xl w-full aspect-video rounded-2xl overflow-hidden bg-dark"
               >
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center text-white">
-                    <div className="text-8xl mb-4">🤖</div>
-                    <p className="text-xl">{galleryImages[selectedImage].alt}</p>
-                  </div>
+                <Image
+                  src={galleryImages[selectedImage].src}
+                  alt={galleryImages[selectedImage].alt}
+                  fill
+                  sizes="(max-width: 1536px) 90vw, 1400px"
+                  className="object-contain"
+                  priority
+                />
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-dark/90 to-transparent p-6">
+                  <p className="text-white text-lg font-medium">{galleryImages[selectedImage].alt}</p>
                 </div>
 
                 <button

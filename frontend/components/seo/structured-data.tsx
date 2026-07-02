@@ -2,41 +2,41 @@ export function StructuredData() {
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "Robot Vacuum",
-    url: "https://robotvacuum.com",
-    logo: "https://robotvacuum.com/logo.png",
-    description: "Premium AI-powered robot vacuum cleaners",
+    name: "Robot Hút Bụi Thông Minh",
+    url: "https://robothutbui.vercel.app",
+    logo: "https://robothutbui.vercel.app/android-chrome-192x192.png",
+    description: "Robot hút bụi thông minh cao cấp với công nghệ AI và điều hướng LiDAR",
     contactPoint: {
       "@type": "ContactPoint",
-      telephone: "+1-800-RVC-0001",
-      contactType: "Customer Service",
-      email: "support@robotvacuum.com",
-      availableLanguage: ["English"],
+      telephone: "+84-800-RVC-0001",
+      contactType: "Dịch Vụ Khách Hàng",
+      email: "support@robothutbui.vn",
+      availableLanguage: ["Vietnamese", "Tiếng Việt"],
     },
     sameAs: [
-      "https://facebook.com/robotvacuum",
-      "https://twitter.com/robotvacuum",
-      "https://instagram.com/robotvacuum",
-      "https://youtube.com/robotvacuum",
+      "https://facebook.com/robothutbui",
+      "https://twitter.com/robothutbui",
+      "https://instagram.com/robothutbui",
+      "https://youtube.com/robothutbui",
     ],
   };
 
   const productSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
-    name: "Robot Vacuum Cleaner",
-    description: "AI Powered Robot Vacuum with LiDAR Navigation, 5000Pa suction, and intelligent obstacle avoidance",
+    name: "Robot Hút Bụi Thông Minh",
+    description: "Robot hút bụi AI với điều hướng LiDAR, lực hút 5000Pa, và tránh vật cản thông minh. Làm sạch tự động hoàn hảo cho ngôi nhà Việt.",
     brand: {
       "@type": "Brand",
-      name: "Robot Vacuum",
+      name: "Robot Hút Bụi Thông Minh",
     },
     offers: {
       "@type": "Offer",
       availability: "https://schema.org/InStock",
-      price: "599.00",
-      priceCurrency: "USD",
+      price: "12990000",
+      priceCurrency: "VND",
       priceValidUntil: "2026-12-31",
-      url: "https://robotvacuum.com",
+      url: "https://robothutbui.vercel.app",
     },
     aggregateRating: {
       "@type": "AggregateRating",
@@ -45,9 +45,9 @@ export function StructuredData() {
       bestRating: "5",
       worstRating: "1",
     },
-    image: "https://robotvacuum.com/robot-hero.png",
-    sku: "RVC-001",
-    mpn: "RVC-2026",
+    image: "https://robothutbui.vercel.app/robot-hero.png",
+    sku: "RHB-VN-001",
+    mpn: "RHB-2026",
   };
 
   const faqSchema = {
@@ -56,26 +56,26 @@ export function StructuredData() {
     mainEntity: [
       {
         "@type": "Question",
-        name: "How long does the battery last?",
+        name: "Pin sử dụng được bao lâu?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "The Robot Vacuum Cleaner runs for up to 180 minutes (3 hours) on a single charge, which is enough to clean most homes up to 2500 sq ft.",
+          text: "Robot Hút Bụi Thông Minh hoạt động liên tục lên đến 180 phút (3 giờ) với một lần sạc đầy, đủ để làm sạch hầu hết các ngôi nhà lên đến 230m².",
         },
       },
       {
         "@type": "Question",
-        name: "Does it work on carpets and hardwood?",
+        name: "Robot có hoạt động tốt trên thảm và sàn gỗ không?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Yes! It automatically adjusts suction power and brush height based on floor type. It works excellently on hardwood, tile, laminate, and carpets up to 20mm thick.",
+          text: "Hoàn toàn được! Robot tự động điều chỉnh lực hút và độ cao bàn chải dựa trên loại sàn nhà. Hoạt động xuất sắc trên sàn gỗ, gạch, laminate và thảm dày đến 20mm.",
         },
       },
       {
         "@type": "Question",
-        name: "Is it safe for pets?",
+        name: "Robot có an toàn cho thú cưng không?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Absolutely! It is designed with pets in mind. It avoids pet waste, handles pet hair efficiently with its tangle-free brush, and operates quietly to avoid startling your pets.",
+          text: "Chắc chắn rồi! Robot được thiết kế đặc biệt cho gia đình có thú cưng. Nó tránh chất thải của thú cưng, xử lý lông động vật hiệu quả với bàn chải chống rối, và hoạt động êm ái không làm giật mình thú cưng.",
         },
       },
     ],
@@ -88,14 +88,14 @@ export function StructuredData() {
       {
         "@type": "ListItem",
         position: 1,
-        name: "Home",
-        item: "https://robotvacuum.com",
+        name: "Trang Chủ",
+        item: "https://robothutbui.vercel.app",
       },
       {
         "@type": "ListItem",
         position: 2,
-        name: "Robot Vacuum Cleaner",
-        item: "https://robotvacuum.com/#product",
+        name: "Robot Hút Bụi Thông Minh",
+        item: "https://robothutbui.vercel.app/#product",
       },
     ],
   };
@@ -103,11 +103,11 @@ export function StructuredData() {
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "Robot Vacuum",
-    url: "https://robotvacuum.com",
+    name: "Robot Hút Bụi Thông Minh",
+    url: "https://robothutbui.vercel.app",
     potentialAction: {
       "@type": "SearchAction",
-      target: "https://robotvacuum.com/search?q={search_term_string}",
+      target: "https://robothutbui.vercel.app/search?q={search_term_string}",
       "query-input": "required name=search_term_string",
     },
   };

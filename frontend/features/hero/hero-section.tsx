@@ -111,23 +111,16 @@ export function HeroSection() {
               }}
               className="relative z-10"
             >
-              <div className="relative w-full aspect-square flex items-center justify-center">
-                <div className="text-center">
-                  <motion.div 
-                    className="text-[200px] leading-none"
-                    animate={{
-                      rotate: [0, 5, -5, 0],
-                    }}
-                    transition={{
-                      duration: 4,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    }}
-                  >
-                    🤖
-                  </motion.div>
-                  <p className="text-2xl font-bold text-gray-700 dark:text-gray-300 mt-4">Robot Vacuum Cleaner</p>
-                </div>
+              <div className="relative w-full aspect-square max-w-[600px] mx-auto">
+                <Image
+                  src="/robot-hero.png"
+                  alt="Robot Hút Bụi Thông Minh - AI Điều Hướng LiDAR 5000Pa"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 600px"
+                  className="object-contain drop-shadow-2xl"
+                  priority
+                  quality={95}
+                />
               </div>
             </motion.div>
 

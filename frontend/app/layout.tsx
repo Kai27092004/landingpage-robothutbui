@@ -17,46 +17,48 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Robot Vacuum Cleaner - AI Robot Vacuum with LiDAR Navigation",
-  description: "Experience the future of smart cleaning with Robot Vacuum Cleaner. AI-powered robot vacuum with advanced LiDAR navigation, 5000Pa suction, and intelligent obstacle avoidance.",
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
+  title: "Robot Hút Bụi Thông Minh - AI Điều Hướng LiDAR 5000Pa",
+  description: "Trải nghiệm tương lai của việc dọn dẹp thông minh với Robot Hút Bụi AI. Điều hướng LiDAR tiên tiến, lực hút 5000Pa, tránh vật cản thông minh và tự động làm sạch hoàn hảo.",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://robothutbui.vercel.app'),
   keywords: [
-    "robot vacuum",
-    "AI vacuum",
+    "robot hút bụi",
+    "robot hút bụi thông minh",
+    "robot hút bụi AI",
     "LiDAR navigation",
-    "smart home",
-    "automated cleaning",
-    "pet hair vacuum",
-    "Robot Vacuum Cleaner",
+    "nhà thông minh",
+    "dọn dẹp tự động",
+    "hút lông thú cưng",
+    "robot vacuum",
+    "máy hút bụi tự động",
   ],
-  authors: [{ name: "HELIO" }],
+  authors: [{ name: "Robot Hút Bụi Việt Nam" }],
   robots: "index, follow",
   openGraph: {
     type: "website",
-    locale: "en_US",
-    url: "https://robotvacuum.com",
-    title: "Robot Vacuum Cleaner - The Future of Smart Cleaning",
-    description: "AI Powered Robot Vacuum with LiDAR Navigation, 5000Pa suction, and intelligent obstacle avoidance.",
-    siteName: "Robot Vacuum",
+    locale: "vi_VN",
+    url: "https://robothutbui.vercel.app",
+    title: "Robot Hút Bụi Thông Minh - Tương Lai Của Dọn Dẹp AI",
+    description: "Robot Hút Bụi AI với điều hướng LiDAR, lực hút 5000Pa, tránh vật cản thông minh. Làm sạch tự động hoàn hảo cho ngôi nhà Việt.",
+    siteName: "Robot Hút Bụi Thông Minh",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Robot Vacuum Cleaner",
+        alt: "Robot Hút Bụi Thông Minh - AI Điều Hướng LiDAR",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Robot Vacuum Cleaner - AI Robot Vacuum",
-    description: "Experience the future of smart cleaning with advanced AI and LiDAR technology.",
-    images: ["/twitter-image.jpg"],
+    title: "Robot Hút Bụi Thông Minh - AI Điều Hướng LiDAR 5000Pa",
+    description: "Trải nghiệm tương lai dọn dẹp thông minh với công nghệ AI và LiDAR tiên tiến. Lực hút 5000Pa, tự động hoàn toàn.",
+    images: ["/og-image.jpg"],
   },
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon-16x16.png",
-    apple: "/apple-touch-icon.png",
+    icon: "/favicon.webp",
+    shortcut: "/favicon.webp",
+    apple: "/android-chrome-192x192.png",
   },
   manifest: "/site.webmanifest",
 };
@@ -67,7 +69,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${spaceGrotesk.variable}`}>
+    <html lang="vi" suppressHydrationWarning className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <head>
         <StructuredData />
       </head>
